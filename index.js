@@ -38,4 +38,4 @@ const watch = new CountdownTimer({
     targetDate: new Date('Aug 17, 2021 11:59:59'),
 });
 window.addEventListener('DOMContentLoaded', watch.timerStart);
-window.alert(`Дедлайн ДЗ № 11 ${watch.targetDate}, начать отсчет?`)
+window.alert(`Дедлайн ДЗ №11: ${watch.targetDate}, начать отсчет?`)
