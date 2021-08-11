@@ -9,7 +9,6 @@ class CountdownTimer {
         };
         this.selector = selector;
         this.targetDate = targetDate
-        // this.targetDate = new Date(2021, 7, 16, 11, 59, 0, 0);
         this.id = null;
         this.startDate = null;
 
