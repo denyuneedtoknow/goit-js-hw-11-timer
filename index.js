@@ -35,6 +35,7 @@ class CountdownTimer {
 
 const watch = new CountdownTimer({
     selector: '#timer-1',
-    targetDate: new Date('Jul 17, 2022'),
+    targetDate: new Date('Aug 17, 2021 11:59:59'),
 });
 window.addEventListener('DOMContentLoaded', watch.timerStart);
+window.alert(`Дедлайн ДЗ № 11 ${watch.targetDate}, начать отсчет?`)
