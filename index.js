@@ -1,21 +1,22 @@
-class StopWatch {
-    constructor() {
+class CountdownTimer {
+    constructor({ selector, targetDate }) {
         this.refs = {
-            start: document.querySelector('#start'),
-            stop: document.querySelector('#stop'),
-            seconds: document.querySelector('#seconds'),
-            minutes: document.querySelector('#minutes'),
-            hours: document.querySelector('#hours'),
-            days: document.querySelector('#days'),
+
+            seconds: document.querySelector('[data-value="secs"]'),
+            minutes: document.querySelector('[data-value="mins"]'),
+            hours: document.querySelector('[data-value="hours"]'),
+            days: document.querySelector('[data-value="days"]'),
         };
+        this.selector = selector;
+        this.targetDate = targetDate
+        // this.targetDate = new Date(2021, 7, 16, 11, 59, 0, 0);
         this.id = null;
         this.startDate = null;
-        this.deadline = new Date(2021, 7, 16, 11, 59, 0, 0);
+
     }
     calc = () => {
         const currentDate = Date.now();
-        // const delta = (currentDate - this.startDate) / 1000;
-        const delta = (this.deadline - currentDate) / 1000;
+        const delta = (this.targetDate - currentDate) / 1000;
         const sec = Math.floor(delta % 60);
         const mins = Math.floor((delta / 60) % 60);
         const hours = Math.floor((delta / 60 / 60) % 60);
@@ -30,17 +31,11 @@ class StopWatch {
         this.startDate = Date.now();
         this.id = setInterval(this.calc, 1000);
     };
-    timerStop = () => {
-        clearInterval(this.id);
-    };
 
-    //  стрелка привязывает вместо bind
-
-    init() {
-        this.refs.start.addEventListener('click', this.timerStart);
-        this.refs.stop.addEventListener('click', this.timerStop);
-    }
 }
 
-const watch = new StopWatch();
+const watch = new CountdownTimer({
+    selector: '#timer-1',
+    targetDate: new Date('Aug 17, 2022'),
+});
 window.addEventListener('DOMContentLoaded', watch.timerStart);
